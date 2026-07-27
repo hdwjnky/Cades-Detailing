@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cade's Detailing — Mobile Auto Detailing | Buda, Kyle, Austin TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #16181B;
+    --surface: #1F2226;
+    --surface-2: #262A2F;
+    --line: #34383E;
+    --amber: #F2A93B;
+    --amber-dim: #7A5A22;
+    --teal: #3FAFA4;
+    --text: #F2F0EA;
+    --text-dim: #A7ACB3;
+    --text-faint: #6E747C;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+  }
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  a { color: inherit; }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Texture ---------- */
+  .brushed{
+    background:
+      repeating-linear-gradient(100deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px),
+      linear-gradient(160deg, #1c1f23 0%, #14161a 55%, #1a1d21 100%);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(22,24,27,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px;
+  }
+  .brand{
+    font-family:'Bebas Neue',sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.03em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand .dot{ color: var(--amber); }
+  nav{ display:flex; gap: 28px; }
+  nav a{
+    text-decoration:none; color: var(--text-dim); font-size: 14px; font-weight:600;
+    letter-spacing:0.03em; text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  nav a:hover{ color: var(--amber); }
+  .header-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--amber); color:#171717; font-weight:700; font-size:14px;
+    padding: 9px 16px; border-radius: 3px; text-decoration:none;
+    white-space:nowrap;
+  }
+  @media (max-width: 720px){ nav{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 84px 0 64px;
+    position: relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-80px;
+    width:420px; height:420px; border-radius:50%;
+    background: radial-gradient(circle, rgba(242,169,59,0.14) 0%, rgba(242,169,59,0) 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    color: var(--amber); font-size:13px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:28px; height:2px; background: var(--amber); display:inline-block; }
+  .hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size: clamp(48px, 8vw, 84px);
+    line-height: 0.96;
+    margin: 0 0 22px;
+    max-width: 780px;
+  }
+  .hero h1 span{ color: var(--amber); }
+  .hero p{
+    font-size: 18px; line-height:1.6; color: var(--text-dim);
+    max-width: 560px; margin: 0 0 34px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary{
+    background: var(--amber); color:#171717; font-weight:700; font-size:15px;
+    padding: 14px 26px; border-radius:3px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-secondary{
+    border: 1px solid var(--line); color: var(--text); font-weight:600; font-size:15px;
+    padding: 13px 26px; border-radius:3px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-secondary:hover{ border-color: var(--amber); color: var(--amber); }
+
+  .service-area{
+    margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--line);
+    display:flex; gap:32px; flex-wrap:wrap;
+  }
+  .service-area .item{ font-size:14px; color: var(--text-dim); }
+  .service-area .item b{ display:block; color: var(--text); font-size:15px; margin-bottom:2px; }
+
+  /* ---------- Section shared ---------- */
+  section{ padding: 72px 0; border-top: 1px solid var(--line); }
+  .section-head{ margin-bottom: 44px; max-width: 620px; }
+  .section-kicker{
+    color: var(--amber); font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;
+  }
+  .section-head h2{
+    font-family:'Bebas Neue',sans-serif; font-size: clamp(34px, 5vw, 48px); margin:0 0 12px; line-height:1;
+  }
+  .section-head p{ color: var(--text-dim); font-size:16px; line-height:1.6; margin:0; }
+
+  /* ---------- Services ---------- */
+  .service-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  @media (max-width: 680px){ .service-grid{ grid-template-columns: 1fr; } }
+  .service-card{
+    background: var(--surface); border:1px solid var(--line); border-radius:6px;
+    padding: 26px; position:relative;
+  }
+  .service-card.premium{ border-color: rgba(242,169,59,0.4); }
+  .service-tag{
+    position:absolute; top:22px; right:22px; font-size:11px; font-weight:700;
+    color: var(--amber); letter-spacing:0.08em; text-transform:uppercase;
+    border: 1px solid rgba(242,169,59,0.4); padding: 3px 8px; border-radius:20px;
+  }
+  .service-card h3{ margin:0 0 10px; font-size:20px; font-weight:700; padding-right: 70px; }
+  .service-card p{ color: var(--text-dim); font-size:14.5px; line-height:1.55; margin:0 0 18px; }
+  .price-row{ display:flex; align-items:baseline; gap:6px; }
+  .price-row .from{ font-size:12px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
+  .price-row .amount{ font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color: var(--amber); }
+
+  /* ---------- Packages ---------- */
+  .package-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+  @media (max-width: 680px){ .package-grid{ grid-template-columns: 1fr; } }
+  .package-card{
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line); border-radius: 8px; padding: 30px;
+  }
+  .package-card.featured{ border-color: var(--amber); box-shadow: 0 0 0 1px rgba(242,169,59,0.25); }
+  .package-card h3{ font-family:'Bebas Neue',sans-serif; font-size:28px; margin:0 0 6px; letter-spacing:0.02em; }
+  .package-card .desc{ color: var(--text-dim); font-size:14.5px; margin-bottom:20px; line-height:1.5; }
+  .package-card .price{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color: var(--text); }
+  .package-card .price span{ font-size:15px; color: var(--text-faint); font-weight:500; }
+  .package-card .time{ font-size:13px; color: var(--text-faint); margin-top:6px; }
+
+  /* ---------- Estimator (signature element) ---------- */
+  .estimator{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 36px; position:relative; overflow:hidden;
+  }
+  .estimator::before{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(120deg, transparent 40%, rgba(242,169,59,0.05) 50%, transparent 60%);
+    pointer-events:none;
+  }
+  .estimator-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; margin-bottom: 30px; }
+  .estimator-label{ font-size:13px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+  .package-toggle{ display:flex; gap:8px; background: var(--bg); border:1px solid var(--line); border-radius:6px; padding:4px; }
+  .package-toggle button{
+    background:none; border:none; color: var(--text-dim); font-family:'Work Sans',sans-serif;
+    font-size:13px; font-weight:600; padding: 8px 16px; border-radius:4px; cursor:pointer;
+  }
+  .package-toggle button.active{ background: var(--amber); color:#171717; }
+
+  .condition-track-wrap{ margin: 8px 0 34px; }
+  input[type=range]{
+    -webkit-appearance:none; width:100%; height:6px; border-radius:3px;
+    background: linear-gradient(90deg, var(--teal), var(--amber) 55%, #d9622b);
+    outline:none; margin: 18px 0 10px;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+    background: var(--text); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--amber);
+    cursor:pointer;
+  }
+  input[type=range]::-moz-range-thumb{
+    width:22px; height:22px; border-radius:50%; background: var(--text);
+    border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--amber); cursor:pointer;
+  }
+  .condition-labels{ display:flex; justify-content:space-between; font-size:12.5px; color: var(--text-faint); }
+  .condition-labels .active-label{ color: var(--amber); font-weight:700; }
+
+  .estimate-result{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap: 18px; }
+  .estimate-result .range{ font-family:'JetBrains Mono',monospace; font-size: 46px; font-weight:700; color: var(--text); line-height:1; }
+  .estimate-result .range span{ color: var(--amber); }
+  .estimate-note{ font-size: 13.5px; color: var(--text-faint); max-width: 280px; line-height:1.5; }
+
+  /* ---------- Add-ons ---------- */
+  .addon-list{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  @media (max-width: 680px){ .addon-list{ grid-template-columns: 1fr; } }
+  .addon{ background: var(--surface); padding: 18px 22px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .addon .name{ font-size:14.5px; color: var(--text); }
+  .addon .amt{ font-family:'JetBrains Mono',monospace; color: var(--amber); font-weight:700; font-size:14.5px; white-space:nowrap; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items:center; }
+  @media (max-width: 780px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    background: var(--surface); border:1px solid var(--line); border-radius: 10px; padding: 34px;
+  }
+  .contact-method{ display:flex; align-items:center; gap:16px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration:none; }
+  .contact-method:last-child{ border-bottom:none; }
+  .contact-icon{
+    width: 44px; height:44px; border-radius:8px; background: rgba(242,169,59,0.12);
+    display:flex; align-items:center; justify-content:center; color: var(--amber); flex-shrink:0;
+  }
+  .contact-method .label{ font-size:12px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
+  .contact-method .value{ font-size:16px; font-weight:600; color: var(--text); }
+  .contact-note{ color: var(--text-dim); font-size: 15px; line-height:1.7; }
+  .contact-note b{ color: var(--text); }
+
+  footer{ padding: 32px 0; border-top:1px solid var(--line); }
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+  footer .brand{ font-size:20px; }
+  footer .fine{ color: var(--text-faint); font-size:13px; }
+</style>
+</head>
+<body class="brushed">
+
+  <header>
+    <div class="wrap header-inner">
+      <div class="brand">CADE'S<span class="dot">•</span>DETAILING</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#estimate">Get an Estimate</a>
+        <a href="#addons">Add-Ons</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="header-cta" href="tel:7372470225">Call Now</a>
+    </div>
+  </header>
+
+  <section class="hero wrap" style="border-top:none;">
+    <div class="eyebrow">Mobile Detailing · Buda / Kyle / Austin, TX</div>
+    <h1>Your car,<br>brought back to <span>showroom shine.</span></h1>
+    <p>Hand-detailed at your home or office — no drop-off, no waiting around. Every job is priced to match the vehicle in front of me, not a one-size-fits-all menu.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#estimate">Get an estimate ↓</a>
+      <a class="btn-secondary" href="https://instagram.com/cades_detailing" target="_blank" rel="noopener">See recent work on Instagram</a>
+    </div>
+    <div class="service-area">
+      <div class="item"><b>Service Area</b>Buda · Kyle · Austin, TX</div>
+      <div class="item"><b>Booking</b>737-247-0225 · @cades_detailing</div>
+      <div class="item"><b>Format</b>Mobile — I come to you</div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Services</div>
+        <h2>Pick your focus</h2>
+        <p>Exterior and interior detailing, sold separately or bundled below. Every listed price is a starting point — see the estimator for a range based on your vehicle's condition.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <span class="service-tag">Basic</span>
+          <h3>Basic Exterior Detail</h3>
+          <p>Hand wash, wheel clean, hand dry, door jambs cleaned, outside windows cleaned, and tire shine.</p>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$70</span></div>
+        </div>
+        <div class="service-card premium">
+          <span class="service-tag">Premium</span>
+          <h3>Premium Exterior Detail</h3>
+          <p>Deep wheel clean, iron removal from wheels and paint, foam bath, hand wash, hand dry, door jambs cleaned, spray sealant, and tire shine.</p>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$110</span></div>
+        </div>
+        <div class="service-card">
+          <span class="service-tag">Basic</span>
+          <h3>Basic Interior Detail</h3>
+          <p>Vacuuming, wipe down surfaces, and inside window cleaning.</p>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$70</span></div>
+        </div>
+        <div class="service-card premium">
+          <span class="service-tag">Premium</span>
+          <h3>Premium Interior Detail</h3>
+          <p>Full vacuum, full interior wipe down, disinfect surfaces, clean air vents, inside window clean, center console cleaned, air compressor blow-out, and odor elimination.</p>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$110</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Bundles</div>
+        <h2>Full-vehicle packages</h2>
+        <p>Exterior and interior combined, at a lower rate than booking each separately.</p>
+      </div>
+      <div class="package-grid">
+        <div class="package-card">
+          <h3>Basic Package</h3>
+          <div class="desc">Basic Wash &amp; Dry + Basic Interior Detail.</div>
+          <div class="price">$120<span> starting</span></div>
+          <div class="time">1.5 – 2.5 hours</div>
+        </div>
+        <div class="package-card featured">
+          <h3>Premium Package</h3>
+          <div class="desc">Premium Exterior Detail + Premium Interior Cleaning.</div>
+          <div class="price">$200<span> starting</span></div>
+          <div class="time">2.5 – 4 hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estimate">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">How pricing works</div>
+        <h2>Get a real estimate</h2>
+        <p>Pricing depends on how the vehicle actually looks when I get there — a lightly-used daily driver and a truck that hasn't been cleaned in a year aren't the same job. Drag the slider to see a realistic range.</p>
+      </div>
+      <div class="estimator">
+        <div class="estimator-top">
+          <div>
+            <div class="estimator-label">Package</div>
+            <div class="package-toggle">
+              <button id="btn-basic" class="active" onclick="setPkg('basic')">Basic</button>
+              <button id="btn-premium" onclick="setPkg('premium')">Premium</button>
+            </div>
+          </div>
+        </div>
+        <div class="condition-track-wrap">
+          <div class="estimator-label">Vehicle condition</div>
+          <input type="range" id="condition" min="0" max="2" step="1" value="0" oninput="updateEstimate()">
+          <div class="condition-labels">
+            <span id="label-0">Well-maintained</span>
+            <span id="label-1">Moderate build-up</span>
+            <span id="label-2">Heavy / neglected</span>
+          </div>
+        </div>
+        <div class="estimate-result">
+          <div class="range" id="range-output">$110 – <span>$140</span></div>
+          <div class="estimate-note">Estimate only — final price is confirmed after I see the vehicle in person or in photos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="addons">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-kicker">Add-Ons</div>
+        <h2>À la carte extras</h2>
+        <p>Common add-ons on top of any service or package.</p>
+      </div>
+      <div class="addon-list">
+        <div class="addon"><span class="name">3rd row / XXL truck size surcharge</span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Pet hair removal</span><span class="amt">+$40</span></div>
+        <div class="addon"><span class="name">Trash removal</span><span class="amt">+$20</span></div>
+        <div class="addon"><span class="name">Clay bar treatment</span><span class="amt">+$50</span></div>
+        <div class="addon"><span class="name">Engine bay cleaning</span><span class="amt">+$40</span></div>
+        <div class="addon"><span class="name">Leather care</span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Carpet bomb</span><span class="amt">+$20</span></div>
+        <div class="addon"><span class="name">Iron decon wash</span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Acid wash</span><span class="amt">+$50</span></div>
+        <div class="addon"><span class="name">Water spot removal (windows)</span><span class="amt">+$40</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="section-kicker">Contact</div>
+        <h2 class="display" style="font-size:40px;margin:0 0 16px;">Let's get your car booked.</h2>
+        <p class="contact-note">Text or call with your vehicle's <b>make, model, and a photo or two</b> — that's usually enough for me to give you a firm quote before I even arrive. Serving <b>Buda, Kyle, and the greater Austin area</b>.</p>
+      </div>
+      <div class="contact-card">
+        <a class="contact-method" href="tel:7372470225">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div><div class="label">Call or Text</div><div class="value">737-247-0225</div></div>
+        </a>
+        <a class="contact-method" href="https://instagram.com/cades_detailing" target="_blank" rel="noopener">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+          </div>
+          <div><div class="label">Instagram</div><div class="value">@cades_detailing</div></div>
+        </a>
+        <a class="contact-method" href="sms:7372470225?body=Hi%20Cade%2C%20I%27d%20like%20a%20quote%20for%20a%20detail.%20Vehicle%3A%20">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div><div class="label">Quick Request</div><div class="value">Send a quote request text</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="brand display">CADE'S DETAILING</div>
+      <div class="fine">Mobile detailing serving Buda, Kyle &amp; Austin, TX</div>
+    </div>
+  </footer>
+
+<script>
+  const ranges = {
+    basic:   [ [120,150], [150,185], [185,220] ],
+    premium: [ [200,235], [235,270], [270,310] ]
+  };
+  let currentPkg = 'basic';
+
+  function setPkg(pkg){
+    currentPkg = pkg;
+    document.getElementById('btn-basic').classList.toggle('active', pkg==='basic');
+    document.getElementById('btn-premium').classList.toggle('active', pkg==='premium');
+    updateEstimate();
+  }
+
+  function updateEstimate(){
+    const cond = parseInt(document.getElementById('condition').value, 10);
+    const [low, high] = ranges[currentPkg][cond];
+    document.getElementById('range-output').innerHTML = '$' + low + ' – <span>$' + high + '</span>';
+    ['label-0','label-1','label-2'].forEach((id,i)=>{
+      document.getElementById(id).classList.toggle('active-label', i===cond);
+    });
+  }
+  updateEstimate();
+</script>
+
+</body>
+</html>
