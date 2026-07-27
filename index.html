@@ -22,6 +22,7 @@
   }
 
   *{ box-sizing: border-box; }
+  html, body{ overflow-x: hidden; max-width: 100%; }
   html{ scroll-behavior: smooth; }
   body{
     margin:0;
@@ -44,6 +45,10 @@
     max-width: 980px;
     margin: 0 auto;
     padding: 0 24px;
+    width: 100%;
+  }
+  @media (max-width: 480px){
+    .wrap{ padding: 0 18px; }
   }
 
   /* ---------- Texture ---------- */
@@ -88,7 +93,8 @@
 
   /* ---------- Hero ---------- */
   .hero{
-    padding: 84px 0 64px;
+    padding-top: 84px;
+    padding-bottom: 64px;
     position: relative;
     overflow:hidden;
   }
@@ -148,7 +154,7 @@
 
   /* ---------- Services ---------- */
   .service-grid{
-    display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px;
   }
   @media (max-width: 680px){ .service-grid{ grid-template-columns: 1fr; } }
   .service-card{
@@ -168,7 +174,7 @@
   .price-row .amount{ font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color: var(--amber); }
 
   /* ---------- Packages ---------- */
-  .package-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+  .package-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:16px; }
   @media (max-width: 680px){ .package-grid{ grid-template-columns: 1fr; } }
   .package-card{
     background: linear-gradient(160deg, var(--surface-2), var(--surface));
@@ -224,9 +230,11 @@
   .estimate-note{ font-size: 13.5px; color: var(--text-faint); max-width: 280px; line-height:1.5; }
 
   /* ---------- Add-ons ---------- */
-  .addon-list{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .addon-list{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; background: var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
   @media (max-width: 680px){ .addon-list{ grid-template-columns: 1fr; } }
   .addon{ background: var(--surface); padding: 18px 22px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .addon .name{ min-width:0; }
+  .addon .amt{ flex-shrink:0; }
   .addon .name{ font-size:14.5px; color: var(--text); }
   .addon .amt{ font-family:'JetBrains Mono',monospace; color: var(--amber); font-weight:700; font-size:14.5px; white-space:nowrap; }
 
@@ -264,7 +272,7 @@
         <a href="#addons">Add-Ons</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="header-cta" href="tel:7372470225">Call Now</a>
+      <a class="header-cta" href="tel:5124360533">Call Now</a>
     </div>
   </header>
 
@@ -278,7 +286,7 @@
     </div>
     <div class="service-area">
       <div class="item"><b>Service Area</b>Buda · Kyle · Austin, TX</div>
-      <div class="item"><b>Booking</b>737-247-0225 · @cades_detailing</div>
+      <div class="item"><b>Booking</b>512-436-0533 · @cades_detailing</div>
       <div class="item"><b>Format</b>Mobile — I come to you</div>
     </div>
   </section>
@@ -407,11 +415,11 @@
         <p class="contact-note">Text or call with your vehicle's <b>make, model, and a photo or two</b> — that's usually enough for me to give you a firm quote before I even arrive. Serving <b>Buda, Kyle, and the greater Austin area</b>.</p>
       </div>
       <div class="contact-card">
-        <a class="contact-method" href="tel:7372470225">
+        <a class="contact-method" href="tel:5124360533">
           <div class="contact-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
-          <div><div class="label">Call or Text</div><div class="value">737-247-0225</div></div>
+          <div><div class="label">Call or Text</div><div class="value">512-436-0533</div></div>
         </a>
         <a class="contact-method" href="https://instagram.com/cades_detailing" target="_blank" rel="noopener">
           <div class="contact-icon">
@@ -419,7 +427,7 @@
           </div>
           <div><div class="label">Instagram</div><div class="value">@cades_detailing</div></div>
         </a>
-        <a class="contact-method" href="sms:7372470225?body=Hi%20Cade%2C%20I%27d%20like%20a%20quote%20for%20a%20detail.%20Vehicle%3A%20">
+        <a class="contact-method" href="sms:5124360533?body=Hi%20Cade%2C%20I%27d%20like%20a%20quote%20for%20a%20detail.%20Vehicle%3A%20">
           <div class="contact-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
