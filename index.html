@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cade's Detailing — Mobile Auto Detailing | Buda, Kyle, Austin TX</title>
+<meta name="description" content="Showroom shine, right in your driveway. Mobile car detailing in Buda, Kyle, and Austin, TX. Exterior, interior, and full packages — text 512-436-0533 for a quote.">
+<link rel="canonical" href="https://cadesdetailing.com/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2240%2036%2066%2066%22%3E%3Crect%20x%3D%2240%22%20y%3D%2236%22%20width%3D%2266%22%20height%3D%2266%22%20rx%3D%2214%22%20fill%3D%22%2316181B%22/%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23D6A84C%22%20stroke-width%3D%222.808%22%20stroke-linejoin%3D%22round%22%20d%3D%22M70.08%2041.28C70.08%2041.28%2052.3%2066.55%2052.3%2080.59C52.3%2086.95%2055.69%2092.82%2061.19%2095.99C66.69%2099.17%2073.47%2099.17%2078.97%2095.99C84.47%2092.82%2087.86%2086.95%2087.86%2080.59C87.86%2066.55%2070.08%2041.28%2070.08%2041.28Z%22/%3E%3Cpath%20fill%3D%22none%22%20stroke%3D%22%23F2ECDF%22%20stroke-width%3D%222.34%22%20stroke-linecap%3D%22round%22%20d%3D%22M78.97%2081.53C78.96%2085.35%2076.52%2088.75%2072.89%2089.95%22/%3E%3Cpath%20fill%3D%22%23F2ECDF%22%20d%3D%22M91.61%2045.02C91.92%2048.46%2093.79%2050.33%2097.22%2050.64C93.79%2050.95%2091.92%2052.82%2091.61%2056.26C91.3%2052.82%2089.43%2050.95%2085.99%2050.64C89.43%2050.33%2091.3%2048.46%2091.61%2045.02Z%22/%3E%3Cpath%20fill%3D%22%23D6A84C%22%20d%3D%22M51.36%2089.95C51.67%2091.51%2052.61%2092.45%2054.17%2092.76C52.61%2093.07%2051.67%2094.01%2051.36%2095.57C51.05%2094.01%2050.11%2093.07%2048.55%2092.76C50.11%2092.45%2051.05%2091.51%2051.36%2089.95Z%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -13,7 +16,7 @@
     --surface: #1F2226;
     --surface-2: #262A2F;
     --line: #34383E;
-    --amber: #F2A93B;
+    --amber: #D6A84C;
     --amber-dim: #7A5A22;
     --teal: #3FAFA4;
     --text: #F2F0EA;
@@ -76,6 +79,9 @@
     display:flex; align-items:baseline; gap:8px;
   }
   .brand .dot{ color: var(--amber); }
+  a.brand{ text-decoration:none; align-items:center; gap:10px; }
+  .brand .logo{ width:36px; height:42px; flex-shrink:0; }
+  @media (max-width: 400px){ .brand{ font-size:22px; } .brand .logo{ width:30px; height:35px; } }
   nav{ display:flex; gap: 28px; }
   nav a{
     text-decoration:none; color: var(--text-dim); font-size: 14px; font-weight:600;
@@ -102,7 +108,7 @@
     content:"";
     position:absolute; right:-120px; top:-80px;
     width:420px; height:420px; border-radius:50%;
-    background: radial-gradient(circle, rgba(242,169,59,0.14) 0%, rgba(242,169,59,0) 70%);
+    background: radial-gradient(circle, rgba(214,168,76,0.14) 0%, rgba(214,168,76,0) 70%);
     pointer-events:none;
   }
   .eyebrow{
@@ -161,13 +167,13 @@
     background: var(--surface); border:1px solid var(--line); border-radius:6px;
     padding: 26px; position:relative;
   }
-  .service-card.premium{ border-color: rgba(242,169,59,0.4); }
+  .service-card.premium{ border-color: rgba(214,168,76,0.4); }
   .service-tag{
     position:absolute; top:22px; right:22px; font-size:11px; font-weight:700;
     color: var(--amber); letter-spacing:0.08em; text-transform:uppercase;
-    border: 1px solid rgba(242,169,59,0.4); padding: 3px 8px; border-radius:20px;
+    border: 1px solid rgba(214,168,76,0.4); padding: 3px 8px; border-radius:20px;
   }
-  .service-card h3{ margin:0 0 10px; font-size:20px; font-weight:700; padding-right: 70px; }
+  .service-card h3{ margin:0 0 10px; font-size:20px; font-weight:700; padding-right: 90px; }
   .service-card p{ color: var(--text-dim); font-size:14.5px; line-height:1.55; margin:0 0 18px; }
   .price-row{ display:flex; align-items:baseline; gap:6px; }
   .price-row .from{ font-size:12px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
@@ -180,7 +186,7 @@
     background: linear-gradient(160deg, var(--surface-2), var(--surface));
     border: 1px solid var(--line); border-radius: 8px; padding: 30px;
   }
-  .package-card.featured{ border-color: var(--amber); box-shadow: 0 0 0 1px rgba(242,169,59,0.25); }
+  .package-card.featured{ border-color: var(--amber); box-shadow: 0 0 0 1px rgba(214,168,76,0.25); }
   .package-card h3{ font-family:'Bebas Neue',sans-serif; font-size:28px; margin:0 0 6px; letter-spacing:0.02em; }
   .package-card .desc{ color: var(--text-dim); font-size:14.5px; margin-bottom:20px; line-height:1.5; }
   .package-card .price{ font-family:'JetBrains Mono',monospace; font-size:32px; font-weight:700; color: var(--text); }
@@ -194,7 +200,7 @@
   }
   .estimator::before{
     content:""; position:absolute; inset:0;
-    background: linear-gradient(120deg, transparent 40%, rgba(242,169,59,0.05) 50%, transparent 60%);
+    background: linear-gradient(120deg, transparent 40%, rgba(214,168,76,0.05) 50%, transparent 60%);
     pointer-events:none;
   }
   .estimator-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; margin-bottom: 30px; }
@@ -223,10 +229,13 @@
   }
   .condition-labels{ display:flex; justify-content:space-between; font-size:12.5px; color: var(--text-faint); }
   .condition-labels .active-label{ color: var(--amber); font-weight:700; }
+  .condition-labels{ gap:10px; } .condition-labels span:nth-child(2){ text-align:center; } .condition-labels span:last-child{ text-align:right; }
+  @media (max-width: 480px){ .condition-labels{ font-size:11.5px; } }
 
   .estimate-result{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap: 18px; }
   .estimate-result .range{ font-family:'JetBrains Mono',monospace; font-size: 46px; font-weight:700; color: var(--text); line-height:1; }
   .estimate-result .range span{ color: var(--amber); }
+  @media (max-width: 480px){ .estimate-result .range{ font-size: 34px; } .estimator{ padding: 26px; } }
   .estimate-note{ font-size: 13.5px; color: var(--text-faint); max-width: 280px; line-height:1.5; }
 
   /* ---------- Add-ons ---------- */
@@ -237,6 +246,12 @@
   .addon .amt{ flex-shrink:0; }
   .addon .name{ font-size:14.5px; color: var(--text); }
   .addon .amt{ font-family:'JetBrains Mono',monospace; color: var(--amber); font-weight:700; font-size:14.5px; white-space:nowrap; }
+  .addon .name small{ display:block; font-size:12px; color: var(--text-faint); margin-top:3px; }
+  .list-label{ font-size:13px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.08em; font-weight:600; margin-bottom:12px; }
+  .surcharge-list .amt{ color: var(--text-dim); }
+  .addon-list:not(.surcharge-list) .addon:last-child:nth-child(odd){ grid-column: 1 / -1; }
+  .surcharge-list{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+  @media (max-width: 680px){ .surcharge-list{ grid-template-columns: 1fr; } }
 
   /* ---------- Contact ---------- */
   .contact-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items:center; }
@@ -247,7 +262,7 @@
   .contact-method{ display:flex; align-items:center; gap:16px; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration:none; }
   .contact-method:last-child{ border-bottom:none; }
   .contact-icon{
-    width: 44px; height:44px; border-radius:8px; background: rgba(242,169,59,0.12);
+    width: 44px; height:44px; border-radius:8px; background: rgba(214,168,76,0.12);
     display:flex; align-items:center; justify-content:center; color: var(--amber); flex-shrink:0;
   }
   .contact-method .label{ font-size:12px; color: var(--text-faint); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
@@ -265,11 +280,11 @@
 
   <header>
     <div class="wrap header-inner">
-      <div class="brand">CADE'S<span class="dot">•</span>DETAILING</div>
+      <a class="brand" href="#" aria-label="Cade's Detailing home"><svg class="logo" viewBox="46 39 54 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="none" stroke="#D6A84C" stroke-width="2.808" stroke-linejoin="round" d="M70.08 41.28C70.08 41.28 52.3 66.55 52.3 80.59C52.3 86.95 55.69 92.82 61.19 95.99C66.69 99.17 73.47 99.17 78.97 95.99C84.47 92.82 87.86 86.95 87.86 80.59C87.86 66.55 70.08 41.28 70.08 41.28Z"/><path fill="none" stroke="#F2ECDF" stroke-width="2.34" stroke-linecap="round" d="M78.97 81.53C78.96 85.35 76.52 88.75 72.89 89.95"/><path fill="#F2ECDF" d="M91.61 45.02C91.92 48.46 93.79 50.33 97.22 50.64C93.79 50.95 91.92 52.82 91.61 56.26C91.3 52.82 89.43 50.95 85.99 50.64C89.43 50.33 91.3 48.46 91.61 45.02Z"/><path fill="#D6A84C" d="M51.36 89.95C51.67 91.51 52.61 92.45 54.17 92.76C52.61 93.07 51.67 94.01 51.36 95.57C51.05 94.01 50.11 93.07 48.55 92.76C50.11 92.45 51.05 91.51 51.36 89.95Z"/></svg><span>CADE'S<span class="dot">•</span>DETAILING</span></a>
       <nav>
         <a href="#services">Services</a>
         <a href="#estimate">Get an Estimate</a>
-        <a href="#addons">Add-Ons</a>
+        <a href="#addons">Extras</a>
         <a href="#contact">Contact</a>
       </nav>
       <a class="header-cta" href="tel:5124360533">Call Now</a>
@@ -278,7 +293,7 @@
 
   <section class="hero wrap" style="border-top:none;">
     <div class="eyebrow">Mobile Detailing · Buda / Kyle / Austin, TX</div>
-    <h1>Your car,<br>brought back to <span>showroom shine.</span></h1>
+    <h1>Showroom shine,<br>right in your <span>driveway.</span></h1>
     <p>Hand-detailed at your home or office — no drop-off, no waiting around. Every job is priced to match the vehicle in front of me, not a one-size-fits-all menu.</p>
     <div class="hero-ctas">
       <a class="btn-primary" href="#estimate">Get an estimate ↓</a>
@@ -303,25 +318,25 @@
           <span class="service-tag">Basic</span>
           <h3>Basic Exterior Detail</h3>
           <p>Hand wash, wheel clean, hand dry, door jambs cleaned, outside windows cleaned, and tire shine.</p>
-          <div class="price-row"><span class="from">Starting at</span><span class="amount">$70</span></div>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$100</span></div>
         </div>
         <div class="service-card premium">
           <span class="service-tag">Premium</span>
           <h3>Premium Exterior Detail</h3>
           <p>Deep wheel clean, iron removal from wheels and paint, foam bath, hand wash, hand dry, door jambs cleaned, spray sealant, and tire shine.</p>
-          <div class="price-row"><span class="from">Starting at</span><span class="amount">$110</span></div>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$150</span></div>
         </div>
         <div class="service-card">
           <span class="service-tag">Basic</span>
           <h3>Basic Interior Detail</h3>
           <p>Vacuuming, wipe down surfaces, and inside window cleaning.</p>
-          <div class="price-row"><span class="from">Starting at</span><span class="amount">$70</span></div>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$110</span></div>
         </div>
         <div class="service-card premium">
           <span class="service-tag">Premium</span>
           <h3>Premium Interior Detail</h3>
-          <p>Full vacuum, full interior wipe down, disinfect surfaces, clean air vents, inside window clean, center console cleaned, air compressor blow-out, and odor elimination.</p>
-          <div class="price-row"><span class="from">Starting at</span><span class="amount">$110</span></div>
+          <p>Full vacuum, full interior wipe down, disinfect surfaces, clean air vents, inside window clean, center console cleaned, air compressor blow-out, leather cleaning &amp; conditioning, and odor elimination.</p>
+          <div class="price-row"><span class="from">Starting at</span><span class="amount">$160</span></div>
         </div>
       </div>
     </div>
@@ -337,14 +352,14 @@
       <div class="package-grid">
         <div class="package-card">
           <h3>Basic Package</h3>
-          <div class="desc">Basic Wash &amp; Dry + Basic Interior Detail.</div>
-          <div class="price">$120<span> starting</span></div>
+          <div class="desc">Basic Exterior Detail + Basic Interior Detail.</div>
+          <div class="price">$170<span> starting</span></div>
           <div class="time">1.5 – 2.5 hours</div>
         </div>
         <div class="package-card featured">
           <h3>Premium Package</h3>
-          <div class="desc">Premium Exterior Detail + Premium Interior Cleaning.</div>
-          <div class="price">$200<span> starting</span></div>
+          <div class="desc">Premium Exterior Detail + Premium Interior Detail.</div>
+          <div class="price">$260<span> starting</span></div>
           <div class="time">2.5 – 4 hours</div>
         </div>
       </div>
@@ -378,7 +393,7 @@
           </div>
         </div>
         <div class="estimate-result">
-          <div class="range" id="range-output">$110 – <span>$140</span></div>
+          <div class="range" id="range-output">$170 – <span>$200</span></div>
           <div class="estimate-note">Estimate only — final price is confirmed after I see the vehicle in person or in photos.</div>
         </div>
       </div>
@@ -388,21 +403,25 @@
   <section id="addons">
     <div class="wrap">
       <div class="section-head">
-        <div class="section-kicker">Add-Ons</div>
-        <h2>À la carte extras</h2>
-        <p>Common add-ons on top of any service or package.</p>
+        <div class="section-kicker">Add-Ons &amp; Surcharges</div>
+        <h2>Extras &amp; vehicle charges</h2>
+        <p>Add-ons are optional upgrades you can choose. Surcharges depend on the vehicle itself, and I'll always confirm them with you before I start.</p>
       </div>
+      <div class="list-label">Optional add-ons</div>
       <div class="addon-list">
-        <div class="addon"><span class="name">3rd row / XXL truck size surcharge</span><span class="amt">+$30</span></div>
-        <div class="addon"><span class="name">Pet hair removal</span><span class="amt">+$40</span></div>
-        <div class="addon"><span class="name">Trash removal</span><span class="amt">+$20</span></div>
-        <div class="addon"><span class="name">Clay bar treatment</span><span class="amt">+$50</span></div>
-        <div class="addon"><span class="name">Engine bay cleaning</span><span class="amt">+$40</span></div>
-        <div class="addon"><span class="name">Leather care</span><span class="amt">+$30</span></div>
-        <div class="addon"><span class="name">Carpet bomb</span><span class="amt">+$20</span></div>
-        <div class="addon"><span class="name">Iron decon wash</span><span class="amt">+$30</span></div>
-        <div class="addon"><span class="name">Acid wash</span><span class="amt">+$50</span></div>
-        <div class="addon"><span class="name">Water spot removal (windows)</span><span class="amt">+$40</span></div>
+        <div class="addon"><span class="name">Clay decontamination<small>Smooths paint, helps sealant bond</small></span><span class="amt">+$50</span></div>
+        <div class="addon"><span class="name">Engine bay cleaning</span><span class="amt">+$60</span></div>
+        <div class="addon"><span class="name">Water spot removal<small>Glass only</small></span><span class="amt">+$40</span></div>
+        <div class="addon"><span class="name">Surface stain spot treatment</span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Leather conditioning<small>Included in Premium Interior</small></span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Iron decon wash<small>Included in Premium Exterior</small></span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Carpet &amp; floor mat shampoo</span><span class="amt">+$20</span></div>
+      </div>
+      <div class="list-label" style="margin-top:32px;">Vehicle surcharges</div>
+      <div class="addon-list surcharge-list">
+        <div class="addon"><span class="name">3rd row / XXL truck size</span><span class="amt">+$30</span></div>
+        <div class="addon"><span class="name">Pet hair</span><span class="amt">+$50 &amp; up</span></div>
+        <div class="addon"><span class="name">Excessive trash</span><span class="amt">+$20</span></div>
       </div>
     </div>
   </section>
@@ -446,8 +465,8 @@
 
 <script>
   const ranges = {
-    basic:   [ [120,150], [150,185], [185,220] ],
-    premium: [ [200,235], [235,270], [270,310] ]
+    basic:   [ [170,200], [200,240], [240,280] ],
+    premium: [ [260,300], [300,345], [345,390] ]
   };
   let currentPkg = 'basic';
 
