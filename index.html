@@ -90,6 +90,32 @@
      (iPhone Low Power Mode, data saver, etc.) just shows the still photo. */
   .hero video{ opacity:0; transition: opacity .6s ease; pointer-events:none; }
   .hero video.on{ opacity:1; }
+
+  /* Phone hero: crossfading, slowly zooming stills instead of a video
+     (in-app browsers like Instagram force a pause button onto videos). */
+  .slides{ position:absolute; inset:0; z-index:0; overflow:hidden; display:none; }
+  .slides img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; animation: slide 20s linear infinite;
+  }
+  .slides img:nth-child(1){ animation-delay: 0s; }
+  .slides img:nth-child(2){ animation-delay: 4s; }
+  .slides img:nth-child(3){ animation-delay: 8s; }
+  .slides img:nth-child(4){ animation-delay: 12s; }
+  .slides img:nth-child(5){ animation-delay: 16s; }
+  @keyframes slide{
+    0%   { opacity:0; transform: scale(1); }
+    5%   { opacity:1; }
+    20%  { opacity:1; }
+    26%  { opacity:0; transform: scale(1.09); }
+    100% { opacity:0; transform: scale(1.09); }
+  }
+  .use-slides .slides{ display:block; }
+  .use-slides #hero-video{ display:none; }
+  @media (prefers-reduced-motion: reduce){
+    .slides img{ animation:none; }
+    .slides img:first-child{ opacity:1; }
+  }
   .hero video::-webkit-media-controls,
   .hero video::-webkit-media-controls-panel,
   .hero video::-webkit-media-controls-play-button,
@@ -322,6 +348,13 @@
   <section class="hero">
     <img class="hero-poster" id="hero-poster" src="media/hero_desktop_poster.jpg" alt="" aria-hidden="true">
     <video id="hero-video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true"></video>
+    <div class="slides" aria-hidden="true">
+      <img data-src="media/slide1.jpg" alt="">
+      <img data-src="media/slide2.jpg" alt="">
+      <img data-src="media/slide3.jpg" alt="">
+      <img data-src="media/slide4.jpg" alt="">
+      <img data-src="media/slide5.jpg" alt="">
+    </div>
     <div class="wrap">
       <div class="eyebrow">Mobile Detailing · Buda / Kyle / Austin, TX</div>
       <h1>Showroom shine,<br>right in your <span>driveway.</span></h1>
@@ -575,9 +608,15 @@
     const v = document.getElementById('hero-video');
     const poster = document.getElementById('hero-poster');
     const phone = window.matchMedia('(max-width: 780px)').matches;
-    poster.src = phone ? 'media/hero_phone_poster.jpg' : 'media/hero_desktop_poster.jpg';
+    poster.src = phone ? 'media/slide1.jpg' : 'media/hero_desktop_poster.jpg';
+    if (phone){
+      // Phones: photo slideshow, no video element in use at all.
+      document.querySelector('.hero').classList.add('use-slides');
+      document.querySelectorAll('.slides img').forEach(img => { img.src = img.dataset.src; });
+      return;
+    }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    v.src = phone ? 'media/hero_phone.mp4' : 'media/hero_desktop.mp4';
+    v.src = 'media/hero_desktop.mp4';
     v.muted = true;
     v.addEventListener('playing', () => { v.classList.add('on'); });
     const p = v.play(); if (p && p.catch) p.catch(()=>{});
