@@ -86,6 +86,15 @@
   .hero video, .hero .hero-poster{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
   }
+  /* Keep the video invisible until it is actually playing, so a blocked autoplay
+     (iPhone Low Power Mode, data saver, etc.) just shows the still photo. */
+  .hero video{ opacity:0; transition: opacity .6s ease; pointer-events:none; }
+  .hero video.on{ opacity:1; }
+  .hero video::-webkit-media-controls,
+  .hero video::-webkit-media-controls-panel,
+  .hero video::-webkit-media-controls-play-button,
+  .hero video::-webkit-media-controls-start-playback-button,
+  .hero video::-webkit-media-controls-overlay-play-button{ display:none !important; -webkit-appearance:none; }
   .hero::before{
     content:""; position:absolute; inset:0; z-index:1;
     background:
@@ -312,7 +321,7 @@
 
   <section class="hero">
     <img class="hero-poster" id="hero-poster" src="media/hero_desktop_poster.jpg" alt="" aria-hidden="true">
-    <video id="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+    <video id="hero-video" autoplay muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true"></video>
     <div class="wrap">
       <div class="eyebrow">Mobile Detailing · Buda / Kyle / Austin, TX</div>
       <h1>Showroom shine,<br>right in your <span>driveway.</span></h1>
@@ -569,7 +578,8 @@
     poster.src = phone ? 'media/hero_phone_poster.jpg' : 'media/hero_desktop_poster.jpg';
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     v.src = phone ? 'media/hero_phone.mp4' : 'media/hero_desktop.mp4';
-    v.addEventListener('playing', () => { poster.style.display = 'none'; });
+    v.muted = true;
+    v.addEventListener('playing', () => { v.classList.add('on'); });
     const p = v.play(); if (p && p.catch) p.catch(()=>{});
   })();
 
