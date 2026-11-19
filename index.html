@@ -89,7 +89,7 @@
   /* Keep the video invisible until it is actually playing, so a blocked autoplay
      (iPhone Low Power Mode, data saver, etc.) just shows the still photo. */
   .hero video{ opacity:0; transition: opacity .6s ease; pointer-events:none; }
-  .hero video.on{ opacity:1; filter: brightness(.8) saturate(.9); }
+  .hero video.on{ opacity:1; }
 
   /* Phone hero: crossfading, slowly zooming stills instead of a video
      (in-app browsers like Instagram force a pause button onto videos). */
@@ -326,6 +326,24 @@
     .reveal{ opacity:1; transform:none; transition:none; }
     html{ scroll-behavior:auto; }
     .gallery img, .package-card .bg, .service-card, .btn-primary{ transition:none; }
+  }
+  /* ---------- Desktop split hero: text left, tall slideshow right ---------- */
+  @media (min-width: 781px){
+    .hero.use-slides{ align-items:center; }
+    .hero.use-slides .hero-poster,
+    .hero.use-slides::before{ display:none; }
+    .hero.use-slides .slides{
+      inset:auto;
+      top: calc(50% + 32px);
+      right: max(24px, calc((100vw - 1080px) / 2 + 24px));
+      transform: translateY(-50%);
+      height: min(64vh, 620px);
+      aspect-ratio: 3 / 4;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+    .hero.use-slides .wrap > *{ max-width: 54%; }
+    .hero.use-slides h1{ font-size: clamp(48px, 5.6vw, 78px); }
   }
 </style>
 </head>
@@ -603,24 +621,11 @@
   }
   updateEstimate();
 
-  // ----- Hero video: phone version on small screens, wide version on desktop -----
+  // ----- Hero: photo slideshow on all screens (split layout on desktop via CSS) -----
   (function(){
-    const v = document.getElementById('hero-video');
-    const poster = document.getElementById('hero-poster');
-    const phone = window.matchMedia('(max-width: 780px)').matches;
-    poster.src = phone ? 'media/slide1.jpg' : 'media/hero_desktop_poster.jpg';
-    if (phone){
-      // Phones: photo slideshow, no video element in use at all.
-      document.querySelector('.hero').classList.add('use-slides');
-      document.querySelectorAll('.slides img').forEach(img => { img.src = img.dataset.src; });
-      return;
-    }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    v.src = 'media/hero_desktop.mp4';
-    v.muted = true;
-    v.addEventListener('loadedmetadata', () => { v.playbackRate = 0.6; });
-    v.addEventListener('playing', () => { v.playbackRate = 0.6; v.classList.add('on'); });
-    const p = v.play(); if (p && p.catch) p.catch(()=>{});
+    document.getElementById('hero-poster').src = 'media/slide1.jpg';
+    document.querySelector('.hero').classList.add('use-slides');
+    document.querySelectorAll('.slides img').forEach(img => { img.src = img.dataset.src; });
   })();
 
   // ----- Header background after scrolling -----
