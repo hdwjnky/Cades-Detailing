@@ -329,18 +329,22 @@
   }
   /* ---------- Desktop split hero: text left, tall slideshow right ---------- */
   @media (min-width: 781px){
-    .hero.use-slides{ align-items:center; }
+    .hero.use-slides{ min-height:0; align-items:flex-start; padding: 110px 0 56px; }
     .hero.use-slides .hero-poster,
     .hero.use-slides::before{ display:none; }
+    .hero.use-slides .wrap{
+      min-height: min(62vh, 560px);
+      display:flex; flex-direction:column; justify-content:center;
+    }
     .hero.use-slides .slides{
       inset:auto;
-      top: calc(50% + 32px);
+      top: 110px;
       right: max(24px, calc((100vw - 1080px) / 2 + 24px));
-      transform: translateY(-50%);
-      height: min(64vh, 620px);
+      height: min(62vh, 560px);
       aspect-ratio: 3 / 4;
       border-radius: 12px;
       border: 1px solid var(--line);
+      background: var(--surface);
     }
     .hero.use-slides .wrap > *{ max-width: 54%; }
     .hero.use-slides h1{ font-size: clamp(48px, 5.6vw, 78px); }
