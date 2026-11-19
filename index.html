@@ -40,7 +40,7 @@
   .display{ font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif; letter-spacing: 0.02em; }
   a { color: inherit; }
 
-  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 24px; width: 100%; }
+  .wrap{ max-width: 1280px; margin: 0 auto; padding: 0 24px; width: 100%; }
   @media (max-width: 480px){ .wrap{ padding: 0 18px; } }
 
   .brushed{
@@ -327,28 +327,6 @@
     html{ scroll-behavior:auto; }
     .gallery img, .package-card .bg, .service-card, .btn-primary{ transition:none; }
   }
-  /* ---------- Desktop split hero: text left, tall slideshow right ---------- */
-  @media (min-width: 781px){
-    .hero.use-slides{ min-height:0; align-items:flex-start; padding: 110px 0 56px; }
-    .hero.use-slides .hero-poster,
-    .hero.use-slides::before{ display:none; }
-    .hero.use-slides .wrap{
-      min-height: min(62vh, 560px);
-      display:flex; flex-direction:column; justify-content:center;
-    }
-    .hero.use-slides .slides{
-      inset:auto;
-      top: 110px;
-      right: max(24px, calc((100vw - 1080px) / 2 + 24px));
-      height: min(62vh, 560px);
-      aspect-ratio: 3 / 4;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-    }
-    .hero.use-slides .wrap > *{ max-width: 54%; }
-    .hero.use-slides h1{ font-size: clamp(48px, 5.6vw, 78px); }
-  }
 </style>
 </head>
 <body class="brushed">
@@ -625,7 +603,7 @@
   }
   updateEstimate();
 
-  // ----- Hero: photo slideshow on all screens (split layout on desktop via CSS) -----
+  // ----- Hero: full-width photo slideshow on all screens -----
   (function(){
     document.getElementById('hero-poster').src = 'media/slide1.jpg';
     document.querySelector('.hero').classList.add('use-slides');
