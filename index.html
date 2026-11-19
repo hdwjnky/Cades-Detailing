@@ -89,7 +89,7 @@
   /* Keep the video invisible until it is actually playing, so a blocked autoplay
      (iPhone Low Power Mode, data saver, etc.) just shows the still photo. */
   .hero video{ opacity:0; transition: opacity .6s ease; pointer-events:none; }
-  .hero video.on{ opacity:1; }
+  .hero video.on{ opacity:1; filter: brightness(.8) saturate(.9); }
 
   /* Phone hero: crossfading, slowly zooming stills instead of a video
      (in-app browsers like Instagram force a pause button onto videos). */
@@ -618,7 +618,8 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     v.src = 'media/hero_desktop.mp4';
     v.muted = true;
-    v.addEventListener('playing', () => { v.classList.add('on'); });
+    v.addEventListener('loadedmetadata', () => { v.playbackRate = 0.6; });
+    v.addEventListener('playing', () => { v.playbackRate = 0.6; v.classList.add('on'); });
     const p = v.play(); if (p && p.catch) p.catch(()=>{});
   })();
 
